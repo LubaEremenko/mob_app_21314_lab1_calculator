@@ -12,31 +12,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btn_0.setOnCliclListener{setTextFields("0")}
-        btn_1.setOnCliclListener{setTextFields("1")}
-        btn_2.setOnCliclListener{setTextFields("2")}
-        btn_3.setOnCliclListener{setTextFields("3")}
-        btn_4.setOnCliclListener{setTextFields("4")}
-        btn_5.setOnCliclListener{setTextFields("5")}
-        btn_6.setOnCliclListener{setTextFields("6")}
-        btn_7.setOnCliclListener{setTextFields("7")}
-        btn_8.setOnCliclListener{setTextFields("8")}
-        btn_9.setOnCliclListener{setTextFields("9")}
+        btn_0.setOnClickListener{setTextFields("0")}
+        btn_1.setOnClickListener{setTextFields("1")}
+        btn_2.setOnClickListener{setTextFields("2")}
+        btn_3.setOnClickListener{setTextFields("3")}
+        btn_4.setOnClickListener{setTextFields("4")}
+        btn_5.setOnClickListener{setTextFields("5")}
+        btn_6.setOnClickListener{setTextFields("6")}
+        btn_7.setOnClickListener{setTextFields("7")}
+        btn_8.setOnClickListener{setTextFields("8")}
+        btn_9.setOnClickListener{setTextFields("9")}
 
-        btn_sub.setOnCliclListener{setTextFields("-")}
-        btn_add.setOnCliclListener{setTextFields("+")}
-        btn_multi.setOnCliclListener{setTextFields("*")}
-        btn_div.setOnCliclListener{setTextFields("/")}
+        btn_sub.setOnClickListener{setTextFields("-")}
+        btn_add.setOnClickListener{setTextFields("+")}
+        btn_multi.setOnClickListener{setTextFields("*")}
+        btn_div.setOnClickListener{setTextFields("/")}
 
-        btn_dot.setOnCliclListener{setTextFields(".")}
-        btn_breket1.setOnCliclListener{setTextFields("(")}
-        btn_breket2.setOnCliclListener{setTextFields(")")}
-        btn_ac.setOnCliclListener{
+        btn_dot.setOnClickListener{setTextFields(".")}
+        btn_breket1.setOnClickListener{setTextFields("(")}
+        btn_breket2.setOnClickListener{setTextFields(")")}
+        btn_ac.setOnClickListener{
             math_operation.text = ""
             result_text.text = ""
 
         }
-        btn_back.setOnCliclListener {
+        btn_back.setOnClickListener {
             val str = math_operation.text.toString()
             if (str.isNotEmpty()) {
                 math_operation.text = str.substring(0, str.length - 1)
@@ -44,12 +44,12 @@ class MainActivity : AppCompatActivity() {
             result_text.text = ""
         }
 
-        btn_eq.setOnCliclListener {
+        btn_eq.setOnClickListener {
             try {
                 val ex = ExpressionBuilder(math_operation.text.toString()).build()
                 val result = ex.evaluate()
-                val longRes = reuslt.toLong()
-                if(resul == longRes.toDouble()) {
+                val longRes = result.toLong()
+                if(result == longRes.toDouble()) {
                     result_text.text = longRes.toString()
                 } else {
                     result_text.text = result.toString()
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     fun setTextFields(str: String) {
         if (result_text.text != "") {
             math_operation.text = result_text.text
-            result.text = ""
+            result_text.text = ""
         }
         math_operation.append(str)
 
